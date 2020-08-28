@@ -1,7 +1,8 @@
-package lesson3.bai32;
+package lesson3.bai33;
+
 import java.sql.Timestamp;
-import java.util.List;
-public class LaptopEntity {
+
+public class LaptopEntity3 {
     private int id;
     private String name;
     private String url;
@@ -15,26 +16,11 @@ public class LaptopEntity {
     private String Screen_resolution;
     private String screen_size;
     private int sold;
+    private String card;
     private Timestamp created_timestamp;
     private Timestamp lasted_updated_timestamp;
-    private Long FromPrice;
-    private Long toPrice;
-    private String sort;
-    private String card;
 
-    public LaptopEntity(Long fromPrice, Long toPrice, String maker, String screen_size, String ram, String cpu, String type, String card) {
-        FromPrice = fromPrice;
-        this.toPrice = toPrice;
-        this.maker = maker;
-        this.screen_size = screen_size;
-        this.ram = ram;
-        this.cpu = cpu;
-        this.type = type;
-        this.sort = sort;
-        this.card = card;
-    }
-
-    public LaptopEntity(int id,  String name, String url, String maker, String type, String ram, String cpu, String ssd, String hdd, Long price, String screen_resolution, String screen_size, int sold, Timestamp created_timestamp, Timestamp lasted_updated_timestamp, String card) {
+    public LaptopEntity3(int id, String name, String url, String maker, String type, String ram, String cpu, String ssd, String hdd, Long price, String screen_resolution, String screen_size, int sold, String card, Timestamp created_timestamp, Timestamp lasted_updated_timestamp) {
         this.id = id;
         this.name = name;
         this.url = url;
@@ -48,33 +34,33 @@ public class LaptopEntity {
         Screen_resolution = screen_resolution;
         this.screen_size = screen_size;
         this.sold = sold;
+        this.card = card;
         this.created_timestamp = created_timestamp;
         this.lasted_updated_timestamp = lasted_updated_timestamp;
-        this.card = card;
     }
 
-    public String getSort() {
-        return sort;
+    public int getId() {
+        return id;
     }
 
-    public void setSort(String sort) {
-        this.sort = sort;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Long getFromPrice() {
-        return FromPrice;
+    public String getName() {
+        return name;
     }
 
-    public void setFromPrice(Long fromPrice) {
-        FromPrice = fromPrice;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Long getToPrice() {
-        return toPrice;
+    public String getUrl() {
+        return url;
     }
 
-    public void setToPrice(Long toPrice) {
-        this.toPrice = toPrice;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getMaker() {
@@ -85,12 +71,12 @@ public class LaptopEntity {
         this.maker = maker;
     }
 
-    public String getScreen_size() {
-        return screen_size;
+    public String getType() {
+        return type;
     }
 
-    public void setScreen_size(String screen_size) {
-        this.screen_size = screen_size;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getRam() {
@@ -109,12 +95,52 @@ public class LaptopEntity {
         this.cpu = cpu;
     }
 
-    public String getType() {
-        return type;
+    public String getSsd() {
+        return ssd;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setSsd(String ssd) {
+        this.ssd = ssd;
+    }
+
+    public String getHdd() {
+        return hdd;
+    }
+
+    public void setHdd(String hdd) {
+        this.hdd = hdd;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public String getScreen_resolution() {
+        return Screen_resolution;
+    }
+
+    public void setScreen_resolution(String screen_resolution) {
+        Screen_resolution = screen_resolution;
+    }
+
+    public String getScreen_size() {
+        return screen_size;
+    }
+
+    public void setScreen_size(String screen_size) {
+        this.screen_size = screen_size;
+    }
+
+    public int getSold() {
+        return sold;
+    }
+
+    public void setSold(int sold) {
+        this.sold = sold;
     }
 
     public String getCard() {
@@ -125,9 +151,25 @@ public class LaptopEntity {
         this.card = card;
     }
 
+    public Timestamp getCreated_timestamp() {
+        return created_timestamp;
+    }
+
+    public void setCreated_timestamp(Timestamp created_timestamp) {
+        this.created_timestamp = created_timestamp;
+    }
+
+    public Timestamp getLasted_updated_timestamp() {
+        return lasted_updated_timestamp;
+    }
+
+    public void setLasted_updated_timestamp(Timestamp lasted_updated_timestamp) {
+        this.lasted_updated_timestamp = lasted_updated_timestamp;
+    }
+
     @Override
     public String toString() {
-        return "LaptopEntity{" +
+        return "LaptopEntity3{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", url='" + url + '\'' +
@@ -141,12 +183,9 @@ public class LaptopEntity {
                 ", Screen_resolution='" + Screen_resolution + '\'' +
                 ", screen_size='" + screen_size + '\'' +
                 ", sold=" + sold +
+                ", card='" + card + '\'' +
                 ", created_timestamp=" + created_timestamp +
                 ", lasted_updated_timestamp=" + lasted_updated_timestamp +
-                ", FromPrice=" + FromPrice +
-                ", toPrice=" + toPrice +
-                ", sort='" + sort + '\'' +
-                ", card='" + card + '\'' +
                 '}';
     }
 }
