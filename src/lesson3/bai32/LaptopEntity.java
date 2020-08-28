@@ -34,7 +34,7 @@ public class LaptopEntity {
         this.card = card;
     }
 
-    public LaptopEntity(int id, String name, String url, String maker, String type, String ram, String cpu, String ssd, String hdd, Long price, String screen_resolution, String screen_size, int sold, Timestamp created_timestamp, Timestamp lasted_updated_timestamp, String card) {
+    public LaptopEntity(int id,  String name, String url, String maker, String type, String ram, String cpu, String ssd, String hdd, Long price, String screen_resolution, String screen_size, int sold, Timestamp created_timestamp, Timestamp lasted_updated_timestamp, String card) {
         this.id = id;
         this.name = name;
         this.url = url;

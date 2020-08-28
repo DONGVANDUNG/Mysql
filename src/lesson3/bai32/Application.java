@@ -42,7 +42,7 @@ public class Application {
                 if (screen_size.equals("0")) {
                     screen_size = null;
                 }
-                System.out.print("\t+Ram(if not can input 0) : ");
+                System.out.print ("\t+Ram(if not can input 0) : ");
                 String ram = sc.next();
                 if (ram.equals("0")) {
                     ram = null;
