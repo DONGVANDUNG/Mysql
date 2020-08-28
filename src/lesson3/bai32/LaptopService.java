@@ -20,30 +20,34 @@ public class LaptopService {
         if (laptopEntity.getFromPrice() != null) {
             query = query + " WHERE price>=" + laptopEntity.getFromPrice();
         }
+        if(laptopEntity.getFromPrice()==null){
+            query=query+" WHERE";
+        }
         if (laptopEntity.getToPrice() != null) {
-            query = query + " AND price<=" + laptopEntity.getToPrice();
+            query = query + " price<=" + laptopEntity.getToPrice()+" AND";
         }
         if (laptopEntity.getMaker() != null) {
-            query = query + " AND maker='" + laptopEntity.getMaker() + "'";
+            query = query + " maker='" + laptopEntity.getMaker() + "' AND";
         }
         if (laptopEntity.getScreen_size() != null) {
-            query = query + " AND screen_size='" + laptopEntity.getScreen_size() + "'";
+            query = query + " screen_size='" + laptopEntity.getScreen_size() + "'  AND";
         }
         if (laptopEntity.getRam() != null) {
-            query = query + " AND ram='" + laptopEntity.getRam() + "'";
+            query = query + " ram='" + laptopEntity.getRam() + "'  AND";
         }
         if (laptopEntity.getType() != null) {
-            query = query + " AND type='" + laptopEntity.getType() + "'";
-        }
-        if (laptopEntity.getSort().equals("increase")) {
-            query = query + " AND ORDER BY " + laptopEntity.getSort() + " ASC";
-        }
-        if (laptopEntity.getSort().equals("decrease")) {
-            query = query + " AND ORDER BY " + laptopEntity.getSort() + " DESC";
+            query = query + "  type='" + laptopEntity.getType() + "'  AND";
         }
         if (laptopEntity.getCard() != null) {
-            query = query + " AND card='" + laptopEntity.getCard() + "'";
+            query = query + " card='" + laptopEntity.getCard() + "'  AND";
         }
+        if (laptopEntity.getSort().equals("increase")) {
+            query = query + " ORDER BY " + laptopEntity.getSort() + " ASC";
+        }
+        if (laptopEntity.getSort().equals("decrease")) {
+            query = query + " ORDER BY " + laptopEntity.getSort() + " DESC";
+        }
+
         try {
             Statement statement = connection.createStatement();
             ResultSet data = statement.executeQuery(query);
