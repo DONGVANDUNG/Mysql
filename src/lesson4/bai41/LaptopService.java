@@ -19,7 +19,7 @@ public class LaptopService {
     }
 
     public void getCounterByMaker() {
-        Map<String, Integer> counters = new HashMap<>();
+        List<Counter> counters=new ArrayList<>();
         String query = "SELECT maker,COUNT(maker) FROM store_cms_plusplus.laptop GROUP BY maker ORDER BY COUNT(maker) DESC ";
         try {
             Statement statement = connection.createStatement();
@@ -27,7 +27,7 @@ public class LaptopService {
             while (data.next()) {
                 String maker = data.getString(1);
                 int quantity = data.getInt(2);
-                counters.put(maker, quantity);
+                counters.add(new Counter(maker,quantity));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
