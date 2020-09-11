@@ -55,7 +55,7 @@ public class Application {
         if (ssd.equals("0")) {
             ssd = null;
         }
-        LaptopService laptop = new LaptopService(name, maker, url, type, ram, ssd);
+        LaptopEntity laptop = new LaptopEntity(name, maker, url, type, ram, ssd);
         laptopService.InsertInfor(laptop);
     }
 }

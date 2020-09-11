@@ -70,7 +70,7 @@ public class LaptopEntity {
 
     @Override
     public String toString() {
-        return "LaptopEntity{" +
+        return "LaptopService{" +
                 "name='" + name + '\'' +
                 ", url='" + url + '\'' +
                 ", maker='" + maker + '\'' +
