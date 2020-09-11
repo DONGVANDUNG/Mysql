@@ -2,7 +2,6 @@ package lesson5.bai51;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -24,7 +23,7 @@ public class Application {
             return;
         }
         Scanner sc = new Scanner(System.in);
-        LaptopEntity laptopEntity = new LaptopEntity(connection);
+        LaptopService laptopService = new LaptopService(connection);
         System.out.println("-Moi ban them mot ban ghi moi!");
         System.out.print("\t+Name(if not can input 0): ");
         String name = sc.nextLine();
@@ -56,7 +55,7 @@ public class Application {
         if (ssd.equals("0")) {
             ssd = null;
         }
-        LaptopEntity laptop = new LaptopEntity(name, maker, url, type, ram, ssd);
-        laptopEntity.InsertInfor(laptop);
+        LaptopService laptop = new LaptopService(name, maker, url, type, ram, ssd);
+        laptopService.InsertInfor(laptop);
     }
 }
