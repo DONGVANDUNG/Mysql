@@ -19,6 +19,6 @@ public class Counter {
     public String toString() {
         return "Counter{" +
                 "maker:" + maker +
-                ", quantity=" + quantity+"}";
+                ", quantity=" + quantity + "}";
     }
 }

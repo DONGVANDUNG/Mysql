@@ -19,15 +19,15 @@ public class LaptopService {
     }
 
     public void getCounterByMaker() {
-        List<Counter> counters=new ArrayList<>();
-        String query = "SELECT maker,COUNT(maker) FROM store_cms_plusplus.laptop GROUP BY maker ORDER BY COUNT(maker) DESC ";
+        List<Counter> counters = new ArrayList<>();
+        String query = "SELECT maker,COUNT(maker)  FROM store_cms_plusplus.laptop GROUP BY maker ORDER BY COUNT(maker)DESC ";
         try {
             Statement statement = connection.createStatement();
             ResultSet data = statement.executeQuery(query);
             while (data.next()) {
                 String maker = data.getString(1);
                 int quantity = data.getInt(2);
-                counters.add(new Counter(maker,quantity));
+                counters.add(new Counter(maker, quantity));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

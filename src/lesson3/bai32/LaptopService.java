@@ -16,44 +16,58 @@ public class LaptopService {
 
     public List<LaptopEntity> FindLaptop(LaptopEntity laptopEntity) {
         List<LaptopEntity> laptopEntities = new ArrayList<>();
-        String query = "SELECT *FROM store_cms_plusplus";
+        String query = "SELECT *FROM `laptop` WHERE TRUE";
         if (laptopEntity.getFromPrice() != null) {
-            query = query + " WHERE price>=" + laptopEntity.getFromPrice();
-        }
-        if(laptopEntity.getFromPrice()==null){
-            query=query+" WHERE";
+            query = query + " AND `price`>=" + laptopEntity.getFromPrice();
         }
         if (laptopEntity.getToPrice() != null) {
-            query = query + " price<=" + laptopEntity.getToPrice()+" AND";
+            query = query + " AND `price`<=" + laptopEntity.getToPrice();
         }
         if (laptopEntity.getMaker() != null) {
-            query = query + " maker='" + laptopEntity.getMaker() + "' AND";
+            query = query + " AND `maker`='" + laptopEntity.getMaker() + "'";
         }
         if (laptopEntity.getScreen_size() != null) {
-            query = query + " screen_size='" + laptopEntity.getScreen_size() + "'  AND";
+            query = query + " AND `screen_size`='" + laptopEntity.getScreen_size() + "'";
         }
         if (laptopEntity.getRam() != null) {
-            query = query + " ram='" + laptopEntity.getRam() + "'  AND";
+            query = query + " AND `ram`='" + laptopEntity.getRam() + "'";
         }
         if (laptopEntity.getType() != null) {
-            query = query + "  type='" + laptopEntity.getType() + "'  AND";
+            query = query + " AND `type`='" + laptopEntity.getType() + "'";
         }
         if (laptopEntity.getCard() != null) {
-            query = query + " card='" + laptopEntity.getCard() + "'  AND";
+            query = query + " AND `card`='" + laptopEntity.getCard() + "'";
         }
-        if (laptopEntity.getSort().equals("increase")) {
-            query = query + " ORDER BY " + laptopEntity.getSort() + " ASC";
+        if (laptopEntity.getSort() != null) {
+            if (laptopEntity.getSort().equals("increase")) {
+                query = query + " AND ORDER BY " + laptopEntity.getSort() + " ASC";
+            } else if (laptopEntity.getSort().equals("decrease")) {
+                query = query + " AND ORDER BY " + laptopEntity.getSort() + " DESC";
+            }
         }
-        if (laptopEntity.getSort().equals("decrease")) {
-            query = query + " ORDER BY " + laptopEntity.getSort() + " DESC";
-        }
+        System.out.println(query);
 
         try {
             Statement statement = connection.createStatement();
             ResultSet data = statement.executeQuery(query);
             while (data.next()) {
-                LaptopEntity LT = new LaptopEntity(data.getInt(1), data.getString(2), data.getString(3), data.getString(4), data.getString(5), data.getString(6), data.getString(7), data.getString(8), data.getString(9), data.getLong(10), data.getString(11), data.getString(12), data.getInt(13), data.getTimestamp(14), data.getTimestamp(15), data.getString(16));
-                laptopEntities.add(LT);
+                laptopEntities.add(new LaptopEntity(
+                        data.getInt("id"),
+                        data.getString("name"),
+                        data.getString("url"),
+                        data.getString("maker"),
+                        data.getString("type"),
+                        data.getString("ram"),
+                        data.getString("cpu"),
+                        data.getString("ssd"),
+                        data.getString("ssd"),
+                        data.getLong("price"),
+                        data.getString("screen_resolution"),
+                        data.getString("screen_size"),
+                        data.getInt("sold"),
+                        data.getTimestamp("created_timestamp"),
+                        data.getTimestamp("last_updated_timestamp"),
+                        data.getString("card")));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

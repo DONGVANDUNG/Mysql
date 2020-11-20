@@ -1,6 +1,8 @@
 package lesson3.bai32;
+
 import java.sql.Timestamp;
 import java.util.List;
+
 public class LaptopEntity {
     private int id;
     private String name;
@@ -16,25 +18,34 @@ public class LaptopEntity {
     private String screen_size;
     private int sold;
     private Timestamp created_timestamp;
-    private Timestamp lasted_updated_timestamp;
+    private Timestamp last_updated_timestamp;
     private Long FromPrice;
     private Long toPrice;
     private String sort;
     private String card;
 
-    public LaptopEntity(Long fromPrice, Long toPrice, String maker, String screen_size, String ram, String cpu, String type, String card) {
-        FromPrice = fromPrice;
-        this.toPrice = toPrice;
+    public LaptopEntity(String maker, String screen_size, String ram, String cpu, String type, String card) {
         this.maker = maker;
         this.screen_size = screen_size;
         this.ram = ram;
         this.cpu = cpu;
         this.type = type;
-        this.sort = sort;
         this.card = card;
     }
 
-    public LaptopEntity(int id,  String name, String url, String maker, String type, String ram, String cpu, String ssd, String hdd, Long price, String screen_resolution, String screen_size, int sold, Timestamp created_timestamp, Timestamp lasted_updated_timestamp, String card) {
+    public LaptopEntity(Long fromPrice, Long toPrice, String maker, String screen_size, String ram, String cpu, String type, String card) {
+        this.id = id;
+        this.maker = maker;
+        this.type = type;
+        this.ram = ram;
+        this.cpu = cpu;
+        this.screen_size = screen_size;
+        FromPrice = fromPrice;
+        this.toPrice = toPrice;
+        this.card = card;
+    }
+
+    public LaptopEntity(int id, String name, String url, String maker, String type, String ram, String cpu, String ssd, String hdd, Long price, String screen_resolution, String screen_size, int sold, Timestamp created_timestamp, Timestamp last_updated_timestamp, String card) {
         this.id = id;
         this.name = name;
         this.url = url;
@@ -49,7 +60,7 @@ public class LaptopEntity {
         this.screen_size = screen_size;
         this.sold = sold;
         this.created_timestamp = created_timestamp;
-        this.lasted_updated_timestamp = lasted_updated_timestamp;
+        this.last_updated_timestamp = last_updated_timestamp;
         this.card = card;
     }
 
@@ -127,7 +138,7 @@ public class LaptopEntity {
 
     @Override
     public String toString() {
-        return "LaptopEntity{" +
+        return "lesson4.bai41.LaptopService{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", url='" + url + '\'' +
@@ -142,7 +153,7 @@ public class LaptopEntity {
                 ", screen_size='" + screen_size + '\'' +
                 ", sold=" + sold +
                 ", created_timestamp=" + created_timestamp +
-                ", lasted_updated_timestamp=" + lasted_updated_timestamp +
+                ", last_updated_timestamp=" + last_updated_timestamp +
                 ", FromPrice=" + FromPrice +
                 ", toPrice=" + toPrice +
                 ", sort='" + sort + '\'' +
