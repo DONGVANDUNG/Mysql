@@ -11,7 +11,7 @@ public class Threading {
 class MyThread extends Thread {
     String name;
     int sleep;
-    MyThread(String name,int sleep){
+    MyThread(String name, int sleep){
         this.name=name;
         this.sleep=sleep;
     }
