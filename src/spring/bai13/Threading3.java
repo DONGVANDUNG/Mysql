@@ -2,7 +2,8 @@ package spring.bai13;
 
 public class Threading3 {
     public static int i = 999;
-    public static int count;
+    public static int count = 1;
+
     public static void main(String[] args) {
         Threading3 main = new Threading3();
         Thread thread1 = new Thread() {
@@ -20,23 +21,15 @@ public class Threading3 {
                 }
             }
         };
-        Thread thread2 = new Thread();
-        class Thread1 extends Thread {
+        Thread thread2 = new Thread() {
             @Override
             public void run() {
                 while (true) {
-                    if (main.count == 0) {
-                        main.increament();
-                        if (main.i % 400 == 0 || ((main.i % 4 == 0) && (main.i % 100 != 0))) {
-                            System.out.println("Nam " + main.i + " la nam nhuan!");
-                        } else {
-                            System.out.println("Nam " + main.i + " khong la nam nhuan!");
-                        }
-                        try {
-                            Thread.sleep(1500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                    main.increament();
+                    try {
+                        Thread.sleep(1500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
             }
@@ -46,9 +39,17 @@ public class Threading3 {
     }
 
     public synchronized void increament() {
-        if(i<9999){
-            i+=1;
+        if (count == 0) {
+            if (i % 400 == 0 || ((i % 4 == 0) && (i % 100 != 0))) {
+                System.out.println("Nam " + i + " la nam nhuan!");
+            } else {
+                System.out.println("Nam " + i + " khong la nam nhuan!");
+            }
         }
+        if(i<9999){
+                i += 1;
+            }
         }
     }
+
 
